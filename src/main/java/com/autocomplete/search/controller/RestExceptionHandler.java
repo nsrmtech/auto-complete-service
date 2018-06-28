@@ -16,7 +16,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
   
  
    @ExceptionHandler(ConstraintViolationException.class)
-   protected ResponseEntity<Object> handleEntityNotFound(
+   protected ResponseEntity<Object> handleInvalidInput(
 		   ConstraintViolationException ex) {             
        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
    }

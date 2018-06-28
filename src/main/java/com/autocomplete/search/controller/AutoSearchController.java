@@ -27,7 +27,7 @@ public class AutoSearchController {
 	PincodeRepository repository;
 
 	@RequestMapping(name = "/suggest_cities", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public String findAll(@RequestParam(name = "start") @Valid @Pattern(regexp = ALPHA_REGEX) String start,
+	public String suggestCities(@RequestParam(name = "start") @Valid @Pattern(regexp = ALPHA_REGEX) String start,
 			@RequestParam(name = "atmost") int atmost) {
 
 		StringBuilder result = new StringBuilder();
