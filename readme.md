@@ -5,6 +5,8 @@ This service has been implemented using Spring boot. The below are pre reqs
 2. Maven
 3. Access to internet (to contact maven central)
 
+# This implementation uses Radix Trie(Compressed Radix Tree) algorithm which is efficient for prefix search. This can be implemented more efficiently for larger datasets using Elastic searches.
+
 Execution steps
 
 1. check out/clone the code 

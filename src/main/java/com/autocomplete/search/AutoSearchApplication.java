@@ -9,4 +9,5 @@ public class AutoSearchApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AutoSearchApplication.class, args);
 	}
+	
 }

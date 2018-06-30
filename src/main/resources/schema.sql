@@ -1,1 +1,0 @@
-CREATE TABLE PINCODE as select * from CSVREAD('classpath:pincode_data.csv');
