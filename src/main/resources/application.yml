@@ -1,4 +1,3 @@
 spring:
   application:
-    name: auto-complete-service
-    
+    name: auto-complete-service  

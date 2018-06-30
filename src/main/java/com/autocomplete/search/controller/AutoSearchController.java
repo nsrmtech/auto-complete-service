@@ -6,6 +6,8 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -20,6 +22,8 @@ import com.autocomplete.search.service.AutoSearchService;
 public class AutoSearchController {
 
 	private static final String ALPHA_REGEX = "^[a-zA-Z]+$";
+	
+	private Logger logger = LoggerFactory.getLogger(AutoSearchService.class);
 
 	@Autowired
 	AutoSearchService autoSearchService;
@@ -28,14 +32,18 @@ public class AutoSearchController {
 	public String suggestCities(@RequestParam(name = "start") @Valid @Pattern(regexp = ALPHA_REGEX) String start,
 			@RequestParam(name = "atmost") int atmost) {
 
+		logger.info("start: {}, atmost: {}", start, atmost);
+		
 		StringBuilder result = new StringBuilder();
 
 		if (atmost < 1) {
 			throw new ConstraintViolationException("invalid atmost", null);
 		}
-
-		// Extract city names from the pincode model rows
+				
+		//Get cities as list		
 		List<String> cities = autoSearchService.getCitySuggestions(start.toUpperCase(), atmost);
+		
+		logger.info("cities: {}", cities);
 
 		// append cities line by line
 		cities.forEach(city -> result.append(city).append('\n'));
