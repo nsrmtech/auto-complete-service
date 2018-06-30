@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 import org.apache.commons.collections4.Trie;
 import org.apache.commons.collections4.trie.PatriciaTrie;
 import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,9 +31,7 @@ public class AutoSearchService {
 		List<String> cities = FileUtils.readLines(file, "UTF-8");
 
 		// Initializing fixed city as Radix Trie
-		for (String city : cities) {
-			cityTrie.put(city.toUpperCase(), city);
-		}
+		cities.stream().forEach(city -> cityTrie.put(city.toUpperCase(), city));
 
 	}
 

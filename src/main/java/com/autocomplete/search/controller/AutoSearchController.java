@@ -40,7 +40,7 @@ public class AutoSearchController {
 			throw new ConstraintViolationException("invalid atmost", null);
 		}
 				
-		//Get cities as list		
+		//Get cities as list for start string(case ignorant)	
 		List<String> cities = autoSearchService.getCitySuggestions(start.toUpperCase(), atmost);
 		
 		logger.info("cities: {}", cities);
